@@ -1,0 +1,67 @@
+zerotier:
+  controller: sb-takserver-zerotier-controller-01
+  identities:
+    sb-takserver-01:
+      ipAssignments: "192.168.192.5"
+      secret: asdfasdfasdf:1:ZeroTIER Created Secret Identity:ZeroTIER Created Secret Identity
+    sb-takserver-webmap-01:
+      ipAssignments: "192.168.192.6"
+      secret: asdfasdfasdf:1:ZeroTIER Created Secret Identity:ZeroTIER Created Secret Identity
+    sb-takserver-rtsp-01:
+      ipAssignments: "192.168.192.7"
+      secret: asdfasdfasdf:1:ZeroTIER Created Secret Identity:ZeroTIER Created Secret Identity
+    sb-takserver-telegram-bot-01:
+      ipAssignments: "192.168.192.8"
+      secret: asdfasdfasdf:1:ZeroTIER Created Secret Identity:ZeroTIER Created Secret Identity
+  config:
+    name: "Zerotier Name"
+    cidr: 24
+    IpRangeStart: 192.168.192.10
+    IpRangeEnd: 192.168.192.250
+    RouteTarget: 192.168.192.0
+
+nginx:
+  site-config:
+    sundaygunday:
+      host: sb-takserver-webmap-01
+
+rtsp:
+  version: v0.16.4
+
+webmap:
+  version: 1.8
+
+ftsui:
+  APPIP: 0.0.0.0
+  WEBMAPIP: 192.168.192.6
+
+freetakserver:
+  servername: SundayGunday
+  autostart: True                          # whether or not you want all services to start or only the root service and the RestAPI services
+  motd: "Welcome to SundayGunday"          # or None  ConnectionMessage@MainConfig
+  FTSIP: 192.168.192.5
+  FTSAPIKEY: UniqueFTSAPIKey
+  FTSSECRETKEY: UniqueFTSSECRETKey
+  FTSWEBSOCKETKEY: UniqueFTSWEBSOCKETKey
+  FTSLOGPATH: /var/log
+  FTSDBPATH: /opt/FTSDataBase.db
+  FTSCERTPASSWORD: atakatak
+  SystemUsers:
+    admin:
+      uuid: 1
+      name: admin
+      token: SecretToken 
+      password: UserPassword
+      group: 1
+    UAV1:
+      uuid: 6
+      name: UAV-User1
+      token: uav1token 
+      password: uav1password
+      group: UAV
+    UAV2:
+      uuid: 7
+      name: UAV-User2
+      token: uav2token 
+      password: uav2password
+      group: UAV
